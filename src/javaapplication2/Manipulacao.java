@@ -23,6 +23,7 @@ public class Manipulacao {
     private static double satisfeito;
     private static double insatisfeito;
     private static String sugestao;
+    private static String nome;
     
     public Manipulacao()
     {
@@ -69,6 +70,11 @@ public class Manipulacao {
         this.sugestao = sugestao; 
     }
     
+    public void setNome(String nome) 
+    { 
+        this.nome = nome; 
+    }
+    
     public void setinsatisfeito(double insatisfeito) 
     { 
         this.insatisfeito = insatisfeito; 
@@ -102,6 +108,11 @@ public class Manipulacao {
     public String getSugestao() 
     { 
         return sugestao; 
+    }
+    
+    public String getNome() 
+    { 
+        return nome; 
     }
     
     public double getsatisfeito() 
@@ -152,23 +163,33 @@ public class Manipulacao {
         while (gira = true)
         {
             if (x == 2) 
-            { // 30 segundos      
-                BarChart3D chart = new BarChart3D("Semana da Pesquisa Científica", "Pesquisa de Notas");
+            { // 30 segundos
+                Banco bd = new Banco();
+                bd.consultarQuantidadeVotos();
+                BarChart3D chart = new BarChart3D("Semana da Pesquisa Científica", "Pesquisa de notas atribuida a semana ( "+this.totalVotos+" votos ).");
                 chart.pack( );
                 RefineryUtilities.centerFrameOnScreen( chart );
                 chart.setVisible( true );               
-                Thread.sleep(120000);
+                Thread.sleep(60000);
                 chart.dispose();
                 x = 1; 
             } 
             else if (x == 1)
             {                
-                PieChart demo = new PieChart("Semana da Pesquisa Científica.", "Pesquisa de satisfação.");
+                PieChart demo = new PieChart("Semana da Pesquisa Científica.", "Pesquisa de satisfação ( "+this.totalVotos+" votos ).");
                 demo.pack();
                 demo.setVisible(true);
-                Thread.sleep(120000);
+                Thread.sleep(60000);
                 demo.dispose();
-                x = 2; 
+                x = 3; 
+            }
+            else if (x == 3)
+            {
+                FormSugestao f = new FormSugestao();
+                f.setVisible(true);
+                Thread.sleep(60000);
+                f.dispose();
+                x=2;
             }
         } 
     }
