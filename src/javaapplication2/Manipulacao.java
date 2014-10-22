@@ -166,20 +166,20 @@ public class Manipulacao {
             { // 30 segundos
                 Banco bd = new Banco();
                 bd.consultarQuantidadeVotos();
-                BarChart3D chart = new BarChart3D("Semana da Pesquisa Científica", "Pesquisa de notas atribuida a semana ( "+this.totalVotos+" votos ).");
+                BarChart3D chart = new BarChart3D("Pesquisa de Satisfação", "Nota atribuída ao evento - de 0 a 5. ("+this.totalVotos+" votos).");
                 chart.pack( );
                 RefineryUtilities.centerFrameOnScreen( chart );
                 chart.setVisible( true );               
-                Thread.sleep(60000);
+                Thread.sleep(30000);
                 chart.dispose();
                 x = 1; 
             } 
             else if (x == 1)
             {                
-                PieChart demo = new PieChart("Semana da Pesquisa Científica.", "Pesquisa de satisfação ( "+this.totalVotos+" votos ).");
+                PieChart demo = new PieChart("Pesquisa de Satisfação.", "Índice de Satisfação ("+this.totalVotos+" votos).");
                 demo.pack();
                 demo.setVisible(true);
-                Thread.sleep(60000);
+                Thread.sleep(30000);
                 demo.dispose();
                 x = 3; 
             }
@@ -187,7 +187,7 @@ public class Manipulacao {
             {
                 FormSugestao f = new FormSugestao();
                 f.setVisible(true);
-                Thread.sleep(60000);
+                Thread.sleep(30000);
                 f.dispose();
                 x=2;
             }
